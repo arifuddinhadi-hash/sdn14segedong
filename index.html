@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SD Negeri 14 Segedong</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+    :root {
+      --blue: #172b5c;
+      --green: #1fa88e;
+      --gold: #c9923e;
+      --light: #f7f9fc;
+      --text: #172033;
+      --muted: #5b6475;
+      --border: #e4e8ef;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: "Plus Jakarta Sans", sans-serif;
+      background: white;
+    }
+
+    h1, h2, h3, h4 { font-family: Manrope, sans-serif; }
+    a { text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+
+    .container {
+      width: min(1180px, calc(100% - 32px));
+      margin: auto;
+    }
+
+    nav {
+      position: fixed;
+      z-index: 10;
+      width: 100%;
+      padding: 18px 0;
+      transition: .3s;
+    }
+
+    nav.scrolled {
+      background: rgba(255,255,255,.96);
+      box-shadow: 0 2px 15px #0001;
+      padding: 11px 0;
+    }
+
+    .nav-content, .brand, .nav-links, .actions {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-content { justify-content: space-between; }
+    .brand { gap: 10px; color: white; }
+    nav.scrolled .brand { color: var(--blue); }
+
+    .logo {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+      border-radius: 10px;
+      background: white;
+    }
+
+    .brand strong { display: block; font-size: 17px; }
+    .brand small { letter-spacing: 2px; }
+
+    .nav-links { gap: 24px; }
+    .nav-links a {
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    nav.scrolled .nav-links a { color: var(--text); }
+    .nav-links a:hover { color: var(--gold); }
+
+    .btn {
+      border: 0;
+      border-radius: 10px;
+      padding: 12px 20px;
+      cursor: pointer;
+      font-weight: 700;
+      transition: .2s;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { color: white; background: var(--green); }
+    .btn-primary:hover { background: #147a69; }
+    .btn-blue { color: white; background: var(--blue); }
+    .btn-gold { color: white; background: var(--gold); }
+    .btn-light { color: var(--blue); background: white; }
+    .btn-outline { color: var(--blue); background: white; border: 1px solid var(--border); }
+
+    .hero {
+      min-height: 88vh;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      color: white;
+      background:
+        linear-gradient(#172b5ce8, #172b5cf5),
+        url("https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&q=80&w=2070")
+        center/cover;
+      padding: 130px 16px 80px;
+    }
+
+    .hero h1 {
+      max-width: 900px;
+      margin: 20px auto;
+      font-size: clamp(38px, 6vw, 72px);
+      line-height: 1.1;
+    }
+
+    .hero h1 span { color: #42e8c8; }
+    .hero p { max-width: 680px; margin: 0 auto 30px; color: #fffc; line-height: 1.8; }
+    .hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+    .badge {
+      display: inline-block;
+      color: #e6c27a;
+      border: 1px solid #fff4;
+      border-radius: 30px;
+      padding: 8px 15px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .stats {
+      position: relative;
+      margin: -40px auto 0;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 12px 30px #172b5c1a;
+      overflow: hidden;
+    }
+
+    .stat { text-align: center; padding: 25px 10px; border-right: 1px solid var(--border); }
+    .stat:last-child { border: 0; }
+    .stat strong { display: block; color: var(--blue); font-size: 32px; }
+    .stat span { color: var(--muted); font-size: 11px; font-weight: 700; }
+
+    section { padding: 90px 0; }
+    .light { background: var(--light); }
+    .intro { display: grid; grid-template-columns: 1fr 1fr; gap: 55px; align-items: center; }
+    .intro img { width: 100%; border-radius: 25px; }
+    .eyebrow { color: var(--green); font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
+    h2 { color: var(--blue); font-size: clamp(30px, 4vw, 46px); line-height: 1.15; }
+    .description { color: var(--muted); line-height: 1.8; }
+
+    .features, .programs {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .feature, .program {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      background: white;
+    }
+
+    .feature h4 { margin: 0 0 5px; }
+    .feature p { margin: 0; color: var(--muted); font-size: 13px; }
+
+    .section-heading { text-align: center; margin: 0 auto 40px; }
+    .programs { grid-template-columns: repeat(4, 1fr); }
+    .program { padding: 0; overflow: hidden; }
+    .program img { display: block; width: 100%; height: 170px; object-fit: cover; }
+    .program h3 { padding: 0 18px; }
+
+    .cta {
+      text-align: center;
+      color: white;
+      background: var(--blue);
+    }
+
+    .cta h2 { color: white; }
+
+    footer {
+      color: #fffc;
+      background: var(--blue);
+      padding: 45px 0 20px;
+    }
+
+    footer h3 { color: white; }
+    footer p { max-width: 500px; line-height: 1.8; }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 20;
+      display: none;
+      place-items: center;
+      padding: 16px;
+      background: #000b;
+    }
+
+    .modal.show { display: grid; }
+    .modal-box {
+      position: relative;
+      width: min(650px, 100%);
+      max-height: 90vh;
+      overflow: auto;
+      padding: 30px;
+      border-radius: 22px;
+      background: white;
+    }
+
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 18px;
+      border: 0;
+      background: none;
+      color: #777;
+      font-size: 25px;
+      cursor: pointer;
+    }
+
+    .modal h2 { margin-top: 0; font-size: 30px; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field.full { grid-column: 1 / -1; }
+    label { color: var(--muted); font-size: 12px; font-weight: 700; }
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      outline: none;
+    }
+
+    input:focus, select:focus, textarea:focus { border-color: var(--green); }
+    .modal-footer { display: flex; justify-content: flex-end; gap: 10px; margin-top: 22px; }
+    .error { display: none; color: #c0392b; background: #fff0f0; padding: 10px; border-radius: 8px; margin-bottom: 15px; font-size: 13px; }
+    .dashboard-card { padding: 18px; margin: 15px 0; border: 1px solid var(--border); border-radius: 14px; background: var(--light); }
+    .dashboard-card strong { color: var(--blue); }
+
+    @media (max-width: 800px) {
+      .nav-links, .desktop-actions { display: none; }
+      .intro, .programs { grid-template-columns: 1fr 1fr; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .stat:nth-child(2) { border-right: 0; }
+      .stat:nth-child(-n+2) { border-bottom: 1px solid var(--border); }
+    }
+
+    @media (max-width: 560px) {
+      .intro, .programs, .features, .form-grid { grid-template-columns: 1fr; }
+      .field.full { grid-column: auto; }
+      section { padding: 65px 0; }
+      .modal-box { padding: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <nav id="navbar">
+    <div class="container nav-content">
+      <a class="brand" href="#home">
+        <img class="logo" src="Logo Utama_SDN14 Segedong.png" alt="Logo SDN 14 Segedong"
+             onerror="this.style.display='none'">
+        <span><strong>SD NEGERI 14</strong><small>SEGEDONG</small></span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#home">Beranda</a>
+        <a href="#profile">Profil</a>
+        <a href="#program">Program</a>
+        <a href="#contact">Kontak</a>
+      </div>
+
+      <div class="actions desktop-actions">
+        <button class="btn btn-light" id="loginButton">Masuk</button>
+        <button class="btn btn-primary" id="registerButton">PPDB 2026</button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero" id="home">
+      <div>
+        <span class="badge">SD NEGERI 14 SEGEDONG • KALIMANTAN BARAT</span>
+        <h1>Menumbuhkan Generasi Unggul, <span>Berkarakter & Siap</span> Menghadapi Masa Depan.</h1>
+        <p>Pusat pendidikan dasar terpercaya yang mengutamakan moral, kecerdasan akademik, dan keterampilan teknologi sejak dini.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" id="heroRegister">Daftar PPDB 2026</button>
+          <a class="btn btn-light" href="#profile">Jelajahi Profil</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="container stats">
+      <div class="stat"><strong>25+</strong><span>Tahun Pengabdian</span></div>
+      <div class="stat"><strong>500+</strong><span>Peserta Didik Aktif</span></div>
+      <div class="stat"><strong>35+</strong><span>Guru & Tenaga Kependidikan</span></div>
+      <div class="stat"><strong>120+</strong><span>Prestasi Siswa</span></div>
+    </div>
+
+    <section class="light" id="profile">
+      <div class="container intro">
+        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=1000" alt="Suasana belajar">
+        <div>
+          <span class="eyebrow">Tentang Sekolah Kami</span>
+          <h2>Tempat Terbaik Anak Bertumbuh & Mengeksplorasi Potensi.</h2>
+          <p class="description">SD Negeri 14 Segedong menghadirkan ekosistem pendidikan yang kondusif, menyenangkan, berbasis karakter luhur, serta berwawasan teknologi.</p>
+          <div class="features">
+            <div class="feature"><h4>Kurikulum Merdeka</h4><p>Pembelajaran interaktif dan mandiri.</p></div>
+            <div class="feature"><h4>Pendidikan Karakter</h4><p>Akhlak mulia dan kedisiplinan.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="program">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Program Unggulan</span>
+          <h2>Membentuk Kompetensi Holistik</h2>
+        </div>
+        <div class="programs">
+          <article class="program"><img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80" alt=""><h3>Literasi & Numerasi</h3></article>
+          <article class="program"><img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=800&q=80" alt=""><h3>Pendidikan Karakter</h3></article>
+          <article class="program"><img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80" alt=""><h3>Integrasi Teknologi</h3></article>
+          <article class="program"><img src="https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=800&q=80" alt=""><h3>Seni & Kreativitas</h3></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+        <h2>Mulai Perjalanan Pendidikan Anak Bersama Kami.</h2>
+        <p>PPDB Tahun Ajaran 2026/2027 telah dibuka.</p>
+        <button class="btn btn-gold" id="ctaRegister">DAFTAR PPDB SEKARANG</button>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <div class="container">
+      <h3>SD NEGERI 14 SEGEDONG</h3>
+      <p>Mewujudkan peserta didik yang cerdas, berkarakter luhur, dan kompetitif di era digital.</p>
+      <p>Jl. Pendidikan No. 14, Kec. Segedong, Kab. Mempawah<br>
+        +62 812 3456 7890 · info@sdn14segedong.sch.id</p>
+    </div>
+  </footer>
+
+  <div class="modal" id="modal">
+    <div class="modal-box">
+      <button class="close" id="closeModal" aria-label="Tutup">&times;</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById("modal");
+    const modalContent = document.getElementById("modalContent");
+    const user = {
+      name: localStorage.getItem("studentName"),
+      regNumber: localStorage.getItem("regNumber"),
+      status: localStorage.getItem("status")
+    };
+
+    function openModal(content) {
+      modalContent.innerHTML = content;
+      modal.classList.add("show");
+    }
+
+    function closeModal() {
+      modal.classList.remove("show");
+    }
+
+    function showLogin() {
+      openModal(`
+        <h2>Masuk Akun PPDB</h2>
+        <div class="error" id="loginError"></div>
+        <form id="loginForm">
+          <div class="field">
+            <label>Email / No. Pendaftaran</label>
+            <input id="email" type="text" required placeholder="nama@email.com">
+          </div>
+          <br>
+          <div class="field">
+            <label>Kata Sandi</label>
+            <input id="password" type="password" required placeholder="Kata sandi">
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-blue" type="submit">Masuk</button>
+          </div>
+        </form>
+        <p>Belum punya akun?
+          <button class="btn btn-primary" id="switchRegister">Daftar Sekarang</button>
+        </p>
+      `);
+
+      document.getElementById("switchRegister").onclick = showRegister;
+      document.getElementById("loginForm").onsubmit = event => {
+        event.preventDefault();
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value.trim();
+
+        if (!email || !password) {
+          const error = document.getElementById("loginError");
+          error.textContent = "Mohon isi email dan kata sandi.";
+          error.style.display = "block";
+          return;
+        }
+
+        if (!user.name) {
+          localStorage.setItem("studentName", email.split("@")[0]);
+          localStorage.setItem("regNumber", "PPDB-2026-8849");
+          localStorage.setItem("status", "Terverifikasi");
+        }
+
+        showDashboard();
+      };
+    }
+
+    function showRegister() {
+      openModal(`
+        <h2>Pendaftaran PPDB 2026</h2>
+        <form id="registerForm">
+          <div class="form-grid">
+            <div class="field"><label>Nama Lengkap Siswa</label><input id="studentName" required></div>
+            <div class="field"><label>NIK / NISN</label><input required></div>
+            <div class="field"><label>Tanggal Lahir</label><input type="date" required></div>
+            <div class="field"><label>Jenis Kelamin</label><select><option>Laki-laki</option><option>Perempuan</option></select></div>
+            <div class="field"><label>Nama Orang Tua / Wali</label><input required></div>
+            <div class="field"><label>Nomor WhatsApp</label><input type="tel" required></div>
+            <div class="field full"><label>Alamat</label><textarea rows="2" required></textarea></div>
+            <div class="field"><label>Asal Sekolah</label><input></div>
+            <div class="field"><label>Jalur Pendaftaran</label><select><option>Zonasi</option><option>Afirmasi</option><option>Prestasi</option><option>Perpindahan Tugas</option></select></div>
+          </div>
+          <div class="modal-footer"><button class="btn btn-primary" type="submit">Kirim Pendaftaran</button></div>
+        </form>
+      `);
+
+      document.getElementById("registerForm").onsubmit = event => {
+        event.preventDefault();
+        const name = document.getElementById("studentName").value.trim();
+        const regNumber = "PPDB-2026-" + Math.floor(1000 + Math.random() * 9000);
+
+        localStorage.setItem("studentName", name);
+        localStorage.setItem("regNumber", regNumber);
+        localStorage.setItem("status", "Submitted");
+
+        openModal(`
+          <h2>Pendaftaran Berhasil!</h2>
+          <p>Data calon siswa telah tersimpan.</p>
+          <div class="dashboard-card">Nomor Pendaftaran:<br><strong>${regNumber}</strong></div>
+          <button class="btn btn-blue" id="openDashboard">Buka Dashboard</button>
+        `);
+
+        document.getElementById("openDashboard").onclick = showDashboard;
+      };
+    }
+
+    function showDashboard() {
+      const name = localStorage.getItem("studentName");
+      const regNumber = localStorage.getItem("regNumber");
+      const status = localStorage.getItem("status");
+
+      openModal(`
+        <h2>Dashboard Calon Siswa</h2>
+        <p>Selamat datang, <strong>${name}</strong>.</p>
+        <div class="dashboard-card">Nomor Pendaftaran:<br><strong>${regNumber}</strong></div>
+        <div class="dashboard-card">Status Pendaftaran:<br><strong>${status}</strong></div>
+        <button class="btn btn-blue" id="logoutButton">Keluar</button>
+      `);
+
+      document.getElementById("logoutButton").onclick = () => {
+        localStorage.clear();
+        closeModal();
+      };
+    }
+
+    document.getElementById("loginButton").onclick = user.name ? showDashboard : showLogin;
+    document.getElementById("registerButton").onclick = showRegister;
+    document.getElementById("heroRegister").onclick = showRegister;
+    document.getElementById("ctaRegister").onclick = showRegister;
+    document.getElementById("closeModal").onclick = closeModal;
+
+    modal.onclick = event => {
+      if (event.target === modal) closeModal();
+    };
+
+    window.addEventListener("scroll", () => {
+      document.getElementById("navbar").classList.toggle("scrolled", window.scrollY > 40);
+    });
+  </script>
+</body>
+</html>
