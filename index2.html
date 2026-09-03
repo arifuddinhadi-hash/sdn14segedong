@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SD Negeri 14 Segedong</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #172033;
+    }
+
+    .font-manrope {
+      font-family: 'Manrope', sans-serif;
+    }
+
+    .font-jakarta {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .modal-hidden {
+      display: none;
+    }
+
+    .modal-visible {
+      display: flex;
+    }
+  </style>
+</head>
+
+<body class="bg-white">
+  <nav id="navbar" class="fixed top-0 z-50 w-full py-5 transition-all duration-300">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <a href="#home" class="flex items-center gap-3">
+        <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 p-1">
+          <img
+            src="Logo Utama_SDN14 Segedong.png"
+            alt="Logo SDN 14 Segedong"
+            class="h-full w-full object-contain"
+            onerror="this.src='https://images.unsplash.com/photo-1594608661623-aa0bd3a69d98?auto=format&fit=crop&q=80&w=100'"
+          >
+        </div>
+        <div id="school-name" class="flex flex-col text-white">
+          <span class="font-manrope text-base font-extrabold leading-tight sm:text-lg">SD NEGERI 14</span>
+          <span class="text-xs font-semibold uppercase tracking-widest">SEGEDONG</span>
+        </div>
+      </a>
+
+      <div class="hidden items-center gap-6 lg:flex">
+        <a class="nav-link text-white" href="#home">Beranda</a>
+        <a class="nav-link text-white" href="#profile">Profil</a>
+        <a class="nav-link text-white" href="#academic">Akademik</a>
+        <a class="nav-link text-white" href="#program">Program</a>
+        <a class="nav-link text-white" href="#achievement">Prestasi</a>
+        <a class="nav-link text-white" href="#contact">Kontak</a>
+
+        <div id="logged-out-actions" class="flex items-center gap-2">
+          <button id="login-button" class="rounded-xl px-4 py-2.5 font-semibold text-white hover:bg-white/10">
+            Masuk
+          </button>
+          <button id="register-button" class="rounded-xl bg-white px-5 py-2.5 font-semibold text-[#243B78] shadow-sm hover:bg-gray-100">
+            PPDB 2026
+          </button>
+        </div>
+
+        <div id="logged-in-actions" class="hidden items-center gap-2">
+          <button id="dashboard-button" class="flex items-center gap-2 rounded-xl bg-[#1FA88E] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#147A69]">
+            <i data-lucide="user" size="16"></i>
+            Dashboard
+          </button>
+          <button id="logout-button" class="rounded-xl bg-white/10 p-2.5 text-white hover:bg-white/20" title="Keluar">
+            <i data-lucide="log-out" size="18"></i>
+          </button>
+        </div>
+      </div>
+
+      <button id="mobile-menu-button" class="rounded-xl bg-white/10 p-2 text-white lg:hidden">
+        <i data-lucide="menu"></i>
+      </button>
+    </div>
+
+    <div id="mobile-menu" class="modal-hidden absolute left-0 top-full w-full bg-white px-6 py-5 shadow-xl lg:hidden">
+      <div class="flex flex-col gap-3">
+        <a href="#home" class="mobile-link border-b py-2 font-semibold">Beranda</a>
+        <a href="#profile" class="mobile-link border-b py-2 font-semibold">Profil</a>
+        <a href="#academic" class="mobile-link border-b py-2 font-semibold">Akademik</a>
+        <a href="#program" class="mobile-link border-b py-2 font-semibold">Program</a>
+        <a href="#achievement" class="mobile-link border-b py-2 font-semibold">Prestasi</a>
+        <a href="#contact" class="mobile-link border-b py-2 font-semibold">Kontak</a>
+        <button id="mobile-login-button" class="rounded-xl bg-gray-100 px-5 py-3 font-semibold text-[#243B78]">
+          Masuk Akun PPDB
+        </button>
+        <button id="mobile-register-button" class="rounded-xl bg-[#243B78] px-5 py-3 font-semibold text-white">
+          Daftar PPDB 2026
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section id="home" class="relative flex min-h-[90vh] items-center justify-center overflow-hidden bg-[#172B5C]">
+      <div
+        class="absolute inset-0 bg-cover bg-center"
+        style="background-image:url('https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&q=80&w=2070')"
+      >
+        <div class="absolute inset-0 bg-gradient-to-b from-[#172B5C]/90 via-[#172B5C]/75 to-[#172B5C]/95"></div>
+      </div>
+
+      <div class="relative z-10 mx-auto max-w-5xl px-6 pt-32 text-center text-white">
+        <span class="mb-6 inline-flex rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-widest text-[#E6C27A]">
+          SD NEGERI 14 SEGEDONG • KALIMANTAN BARAT
+        </span>
+
+        <h1 class="font-manrope text-4xl font-extrabold leading-tight sm:text-5xl md:text-6xl">
+          Menumbuhkan Generasi Unggul,
+          <span class="text-[#42e8c8]">Berkarakter & Siap</span>
+          Menghadapi Masa Depan.
+        </h1>
+
+        <p class="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg">
+          Pusat pendidikan dasar terpercaya yang mengutamakan moral, kecerdasan akademik, dan keterampilan teknologi sejak dini.
+        </p>
+
+        <div class="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
+          <button id="hero-register-button" class="rounded-xl bg-[#1FA88E] px-8 py-4 font-semibold text-white shadow-xl hover:bg-[#147A69]">
+            Daftar PPDB 2026
+            <i data-lucide="arrow-right" class="ml-2 inline-block" size="20"></i>
+          </button>
+          <a href="#profile" class="rounded-xl border border-white/20 bg-white/10 px-8 py-4 font-semibold text-white hover:bg-white/20">
+            Jelajahi Profil
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="relative z-10 -mt-10 mx-4 rounded-2xl border border-[#E4E8EF] bg-white shadow-xl sm:mx-8 lg:mx-20">
+      <div class="grid grid-cols-2 divide-x divide-y divide-[#E4E8EF] lg:grid-cols-4 lg:divide-y-0">
+        <div class="p-6 text-center">
+          <strong class="font-manrope text-3xl font-extrabold text-[#243B78]">25+</strong>
+          <p class="mt-1 text-xs font-medium uppercase tracking-wider text-[#5B6475]">Tahun Pengabdian</p>
+        </div>
+        <div class="p-6 text-center">
+          <strong class="font-manrope text-3xl font-extrabold text-[#243B78]">500+</strong>
+          <p class="mt-1 text-xs font-medium uppercase tracking-wider text-[#5B6475]">Peserta Didik Aktif</p>
+        </div>
+        <div class="p-6 text-center">
+          <strong class="font-manrope text-3xl font-extrabold text-[#243B78]">35+</strong>
+          <p class="mt-1 text-xs font-medium uppercase tracking-wider text-[#5B6475]">Guru & Tenaga Kependidikan</p>
+        </div>
+        <div class="p-6 text-center">
+          <strong class="font-manrope text-3xl font-extrabold text-[#243B78]">120+</strong>
+          <p class="mt-1 text-xs font-medium uppercase tracking-wider text-[#5B6475]">Prestasi Siswa</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="profile" class="bg-[#F7F9FC] py-24">
+      <div class="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+        <img
+          src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=2022"
+          alt="Suasana belajar SDN 14 Segedong"
+          class="h-full max-h-[480px] w-full rounded-[2rem] object-cover shadow-2xl"
+        >
+
+        <div>
+          <span class="text-sm font-bold uppercase tracking-widest text-[#C9923E]">Tentang Sekolah Kami</span>
+          <h2 class="mt-4 font-manrope text-3xl font-extrabold leading-tight text-[#172B5C] sm:text-4xl">
+            Tempat Terbaik Anak Bertumbuh & Mengeksplorasi Potensi.
+          </h2>
+          <p class="mt-6 leading-relaxed text-[#5B6475]">
+            SD Negeri 14 Segedong berkomitmen menghadirkan ekosistem pendidikan yang kondusif, menyenangkan, berbasis karakter luhur, dan berwawasan teknologi.
+          </p>
+
+          <div class="mt-8 grid gap-4 sm:grid-cols-2">
+            <div class="rounded-xl border bg-white p-4 shadow-sm">
+              <i data-lucide="check-circle-2" class="text-[#1FA88E]"></i>
+              <h3 class="mt-3 font-bold">Kurikulum Merdeka</h3>
+              <p class="mt-1 text-xs text-[#5B6475]">Pembelajaran interaktif dan mandiri.</p>
+            </div>
+            <div class="rounded-xl border bg-white p-4 shadow-sm">
+              <i data-lucide="shield-check" class="text-[#C9923E]"></i>
+              <h3 class="mt-3 font-bold">Pendidikan Karakter</h3>
+              <p class="mt-1 text-xs text-[#5B6475]">Akhlak mulia dan kedisiplinan.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="academic" class="bg-white py-24">
+      <div class="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+        <span class="text-sm font-bold uppercase tracking-widest text-[#1FA88E]">Akademik</span>
+        <h2 class="mt-3 font-manrope text-3xl font-extrabold text-[#172B5C] sm:text-4xl">
+          Pembelajaran Berkualitas
+        </h2>
+        <p class="mx-auto mt-5 max-w-2xl text-[#5B6475]">
+          Kami mengembangkan kemampuan literasi, numerasi, karakter, kreativitas, dan teknologi secara seimbang.
+        </p>
+      </div>
+    </section>
+
+    <section id="program" class="bg-[#F7F9FC] py-24">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-12 text-center">
+          <span class="text-sm font-bold uppercase tracking-widest text-[#1FA88E]">Program Unggulan</span>
+          <h2 class="mt-3 font-manrope text-3xl font-extrabold text-[#172B5C] sm:text-4xl">
+            Membentuk Kompetensi Holistik
+          </h2>
+        </div>
+
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div class="overflow-hidden rounded-2xl border bg-white shadow-sm">
+            <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80" alt="Literasi">
+            <h3 class="p-5 font-manrope text-lg font-bold">Literasi & Numerasi</h3>
+          </div>
+          <div class="overflow-hidden rounded-2xl border bg-white shadow-sm">
+            <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=800&q=80" alt="Karakter">
+            <h3 class="p-5 font-manrope text-lg font-bold">Pendidikan Karakter</h3>
+          </div>
+          <div class="overflow-hidden rounded-2xl border bg-white shadow-sm">
+            <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80" alt="Teknologi">
+            <h3 class="p-5 font-manrope text-lg font-bold">Integrasi Teknologi</h3>
+          </div>
+          <div class="overflow-hidden rounded-2xl border bg-white shadow-sm">
+            <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=800&q=80" alt="Seni">
+            <h3 class="p-5 font-manrope text-lg font-bold">Seni & Kreativitas</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="achievement" class="bg-white py-24">
+      <div class="mx-auto max-w-4xl px-4 text-center">
+        <span class="text-sm font-bold uppercase tracking-widest text-[#C9923E]">Prestasi</span>
+        <h2 class="mt-3 font-manrope text-3xl font-extrabold text-[#172B5C] sm:text-4xl">
+          Menghargai Setiap Pencapaian
+        </h2>
+        <p class="mt-5 leading-relaxed text-[#5B6475]">
+          Siswa SD Negeri 14 Segedong terus mengembangkan potensi melalui prestasi akademik, olahraga, seni, dan kegiatan karakter.
+        </p>
+      </div>
+    </section>
+
+    <section class="bg-[#172B5C] px-4 py-24 text-center text-white">
+      <h2 class="font-manrope text-3xl font-extrabold sm:text-5xl">
+        Mulai Perjalanan Pendidikan Anak Bersama Kami.
+      </h2>
+      <p class="mx-auto mt-5 max-w-2xl text-white/80">
+        Penerimaan Peserta Didik Baru Tahun Ajaran 2026/2027 telah dibuka.
+      </p>
+      <button id="cta-register-button" class="mt-8 rounded-xl bg-[#C9923E] px-8 py-4 font-bold hover:bg-[#b07f35]">
+        DAFTAR PPDB SEKARANG
+      </button>
+    </section>
+  </main>
+
+  <footer id="contact" class="bg-[#172B5C] px-4 py-16 text-white">
+    <div class="mx-auto grid max-w-7xl gap-10 md:grid-cols-2">
+      <div>
+        <h2 class="font-manrope text-xl font-bold">SD NEGERI 14 SEGEDONG</h2>
+        <p class="mt-4 max-w-sm text-sm text-white/70">
+          Mewujudkan peserta didik yang cerdas, berkarakter luhur, dan kompetitif di era digital.
+        </p>
+      </div>
+      <div>
+        <h3 class="font-bold">Kontak Resmi</h3>
+        <p class="mt-4 text-sm text-white/70">Jl. Pendidikan No. 14, Kec. Segedong, Kab. Mempawah</p>
+        <p class="mt-2 text-sm text-white/70">+62 812 3456 7890</p>
+        <p class="mt-2 text-sm text-white/70">info@sdn14segedong.sch.id</p>
+      </div>
+    </div>
+    <div class="mx-auto mt-12 max-w-7xl border-t border-white/10 pt-6 text-xs text-white/50">
+      © 2026 SD Negeri 14 Segedong. Hak Cipta Dilindungi.
+    </div>
+  </footer>
+
+  <div id="modal-backdrop" class="modal-hidden fixed inset-0 z-[60] items-center justify-center bg-black/70 p-4 backdrop-blur-sm">
+    <div class="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-3xl bg-white p-6 shadow-2xl sm:p-8">
+      <button id="close-modal" class="absolute right-6 top-6 text-gray-400 hover:text-gray-700">
+        <i data-lucide="x"></i>
+      </button>
+
+      <div id="login-view">
+        <h2 class="font-manrope text-2xl font-extrabold text-[#172B5C]">Masuk Akun PPDB</h2>
+        <p class="mt-2 text-sm text-[#5B6475]">Gunakan email dan kata sandi untuk masuk.</p>
+
+        <form id="login-form" class="mt-6 space-y-4">
+          <input id="login-email" required type="email" placeholder="Email" class="w-full rounded-xl border px-4 py-3 text-sm">
+          <input id="login-password" required type="password" placeholder="Kata sandi" class="w-full rounded-xl border px-4 py-3 text-sm">
+          <p id="login-error" class="hidden rounded-xl bg-red-50 p-3 text-sm text-red-600"></p>
+          <button class="w-full rounded-xl bg-[#243B78] py-3.5 font-semibold text-white hover:bg-[#172B5C]">
+            Masuk ke Dashboard
+          </button>
+        </form>
+
+        <p class="mt-5 text-center text-sm text-[#5B6475]">
+          Belum punya akun?
+          <button id="switch-register" class="font-bold text-[#1FA88E] hover:underline">Daftar sekarang</button>
+        </p>
+      </div>
+
+      <div id="register-view" class="hidden">
+        <h2 class="font-manrope text-2xl font-extrabold text-[#172B5C]">Pendaftaran PPDB 2026</h2>
+        <p class="mt-2 text-sm text-[#5B6475]">Lengkapi data calon peserta didik.</p>
+
+        <form id="register-form" class="mt-6 grid gap-4 sm:grid-cols-2">
+          <input id="student-name" required placeholder="Nama lengkap siswa" class="rounded-xl border px-4 py-3 text-sm">
+          <input id="student-nik" required placeholder="NIK / NISN" class="rounded-xl border px-4 py-3 text-sm">
+          <input id="birth-date" required type="date" class="rounded-xl border px-4 py-3 text-sm">
+          <select id="gender" class="rounded-xl border bg-white px-4 py-3 text-sm">
+            <option>Laki-laki</option>
+            <option>Perempuan</option>
+          </select>
+          <input id="parent-name" required placeholder="Nama orang tua / wali" class="rounded-xl border px-4 py-3 text-sm">
+          <input id="phone" required type="tel" placeholder="Nomor WhatsApp" class="rounded-xl border px-4 py-3 text-sm">
+          <input id="origin-school" placeholder="Asal sekolah TK / PAUD" class="rounded-xl border px-4 py-3 text-sm">
+          <select id="track" class="rounded-xl border bg-white px-4 py-3 text-sm">
+            <option value="Zonasi">Jalur Zonasi</option>
+            <option value="Afirmasi">Jalur Afirmasi</option>
+            <option value="Perpindahan Tugas">Jalur Perpindahan Tugas</option>
+            <option value="Prestasi">Jalur Prestasi</option>
+          </select>
+          <textarea id="address" required placeholder="Alamat lengkap" class="min-h-24 rounded-xl border px-4 py-3 text-sm sm:col-span-2"></textarea>
+          <div class="flex justify-end gap-3 sm:col-span-2">
+            <button type="button" id="cancel-register" class="rounded-xl border px-5 py-3 text-sm font-semibold">Batal</button>
+            <button class="rounded-xl bg-[#1FA88E] px-6 py-3 text-sm font-semibold text-white hover:bg-[#147A69]">Kirim Pendaftaran</button>
+          </div>
+        </form>
+      </div>
+
+      <div id="success-view" class="hidden text-center">
+        <i data-lucide="check-circle-2" class="mx-auto h-16 w-16 text-[#1FA88E]"></i>
+        <h2 class="mt-5 font-manrope text-2xl font-extrabold text-[#172B5C]">Pendaftaran Berhasil!</h2>
+        <p class="mt-3 text-sm text-[#5B6475]">Nomor pendaftaran Anda:</p>
+        <strong id="registration-number" class="mt-4 inline-block rounded-xl bg-[#F7F9FC] px-6 py-3 font-manrope text-xl text-[#243B78]"></strong>
+        <br>
+        <button id="open-dashboard" class="mt-6 rounded-xl bg-[#243B78] px-6 py-3 text-sm font-semibold text-white">
+          Buka Dashboard
+        </button>
+      </div>
+
+      <div id="dashboard-view" class="hidden">
+        <span class="text-xs font-bold uppercase tracking-wider text-[#1FA88E]">Portal Pendaftar PPDB</span>
+        <h2 class="mt-2 font-manrope text-2xl font-extrabold text-[#172B5C]">Dashboard Calon Siswa</h2>
+
+        <div class="mt-6 grid gap-4 sm:grid-cols-3">
+          <div class="rounded-2xl border bg-[#F7F9FC] p-5">
+            <small class="block text-xs uppercase text-[#5B6475]">No. Pendaftaran</small>
+            <strong id="dashboard-number" class="mt-2 block text-[#243B78]"></strong>
+          </div>
+          <div class="rounded-2xl border bg-[#F7F9FC] p-5">
+            <small class="block text-xs uppercase text-[#5B6475]">Nama Siswa</small>
+            <strong id="dashboard-name" class="mt-2 block text-[#172B5C]"></strong>
+          </div>
+          <div class="rounded-2xl border bg-[#F7F9FC] p-5">
+            <small class="block text-xs uppercase text-[#5B6475]">Jalur Seleksi</small>
+            <strong id="dashboard-track" class="mt-2 block text-[#172B5C]"></strong>
+          </div>
+        </div>
+
+        <div class="mt-6 rounded-2xl border p-5">
+          <h3 class="font-bold text-[#172B5C]">Status Pendaftaran</h3>
+          <div class="mt-4 flex items-center gap-3 text-sm">
+            <span class="flex h-8 w-8 items-center justify-center rounded-full bg-[#1FA88E] text-white">✓</span>
+            <span>Data pendaftaran berhasil diterima dan menunggu verifikasi berkas.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('modal-backdrop');
+    const loginView = document.getElementById('login-view');
+    const registerView = document.getElementById('register-view');
+    const successView = document.getElementById('success-view');
+    const dashboardView = document.getElementById('dashboard-view');
+
+    const loggedOutActions = document.getElementById('logged-out-actions');
+    const loggedInActions = document.getElementById('logged-in-actions');
+
+    let currentUser = JSON.parse(localStorage.getItem('ppdbUser')) || null;
+
+    function refreshIcons() {
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function openModal(view = 'login') {
+      modal.classList.remove('modal-hidden');
+      modal.classList.add('modal-visible');
+      showView(view);
+    }
+
+    function closeModal() {
+      modal.classList.add('modal-hidden');
+      modal.classList.remove('modal-visible');
+    }
+
+    function showView(view) {
+      loginView.classList.toggle('hidden', view !== 'login');
+      registerView.classList.toggle('hidden', view !== 'register');
+      successView.classList.toggle('hidden', view !== 'success');
+      dashboardView.classList.toggle('hidden', view !== 'dashboard');
+    }
+
+    function updateUserInterface() {
+      const loggedIn = Boolean(currentUser);
+      loggedOutActions.classList.toggle('hidden', loggedIn);
+      loggedInActions.classList.toggle('hidden', !loggedIn);
+      loggedInActions.classList.toggle('flex', loggedIn);
+
+      if (loggedIn) {
+        document.getElementById('dashboard-button').innerHTML =
+          '<i data-lucide="user" size="16"></i> Dashboard (' +
+          currentUser.name + ')';
+      }
+
+      refreshIcons();
+    }
+
+    function fillDashboard() {
+      document.getElementById('dashboard-number').textContent = currentUser.regNumber;
+      document.getElementById('dashboard-name').textContent = currentUser.name;
+      document.getElementById('dashboard-track').textContent = currentUser.track || 'Zonasi';
+    }
+
+    function openPPDB() {
+      if (currentUser) {
+        fillDashboard();
+        openModal('dashboard');
+      } else {
+        openModal('register');
+      }
+    }
+
+    document.querySelectorAll('#register-button, #hero-register-button, #cta-register-button, #mobile-register-button')
+      .forEach(button => button.addEventListener('click', openPPDB));
+
+    document.querySelectorAll('#login-button, #mobile-login-button')
+      .forEach(button => button.addEventListener('click', () => openModal('login')));
+
+    document.getElementById('dashboard-button').addEventListener('click', () => {
+      fillDashboard();
+      openModal('dashboard');
+    });
+
+    document.getElementById('logout-button').addEventListener('click', () => {
+      currentUser = null;
+      localStorage.removeItem('ppdbUser');
+      updateUserInterface();
+    });
+
+    document.getElementById('close-modal').addEventListener('click', closeModal);
+    document.getElementById('cancel-register').addEventListener('click', closeModal);
+    document.getElementById('switch-register').addEventListener('click', () => openModal('register'));
+
+    modal.addEventListener('click', event => {
+      if (event.target === modal) closeModal();
+    });
+
+    document.getElementById('login-form').addEventListener('submit', event => {
+      event.preventDefault();
+
+      const email = document.getElementById('login-email').value.trim();
+      const password = document.getElementById('login-password').value.trim();
+      const error = document.getElementById('login-error');
+
+      if (!email || !password) {
+        error.textContent = 'Email dan kata sandi wajib diisi.';
+        error.classList.remove('hidden');
+        return;
+      }
+
+      currentUser = {
+        name: email.split('@')[0],
+        email,
+        regNumber: 'PPDB-2026-8849',
+        track: 'Zonasi',
+        status: 'Terverifikasi'
+      };
+
+      localStorage.setItem('ppdbUser', JSON.stringify(currentUser));
+      updateUserInterface();
+      fillDashboard();
+      showView('dashboard');
+    });
+
+    document.getElementById('register-form').addEventListener('submit', event => {
+      event.preventDefault();
+
+      const registrationNumber =
+        'PPDB-2026-' + Math.floor(1000 + Math.random() * 9000);
+
+      currentUser = {
+        name: document.getElementById('student-name').value.trim(),
+        nik: document.getElementById('student-nik').value.trim(),
+        birthDate: document.getElementById('birth-date').value,
+        gender: document.getElementById('gender').value,
+        parentName: document.getElementById('parent-name').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+        originSchool: document.getElementById('origin-school').value.trim(),
+        address: document.getElementById('address').value.trim(),
+        track: document.getElementById('track').value,
+        regNumber: registrationNumber,
+        status: 'Submitted'
+      };
+
+      localStorage.setItem('ppdbUser', JSON.stringify(currentUser));
+      document.getElementById('registration-number').textContent = registrationNumber;
+      document.getElementById('dashboard-number').textContent = registrationNumber;
+      document.getElementById('dashboard-name').textContent = currentUser.name;
+      document.getElementById('dashboard-track').textContent = currentUser.track;
+
+      updateUserInterface();
+      showView('success');
+    });
+
+    document.getElementById('open-dashboard').addEventListener('click', () => {
+      fillDashboard();
+      showView('dashboard');
+    });
+
+    document.getElementById('mobile-menu-button').addEventListener('click', () => {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('modal-hidden');
+      menu.classList.toggle('modal-visible');
+    });
+
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('mobile-menu').classList.add('modal-hidden');
+        document.getElementById('mobile-menu').classList.remove('modal-visible');
+      });
+    });
+
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      const schoolName = document.getElementById('school-name');
+      const links = document.querySelectorAll('.nav-link');
+
+      if (window.scrollY > 40) {
+        navbar.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-md', 'py-3');
+        navbar.classList.remove('py-5');
+        schoolName.classList.remove('text-white');
+        schoolName.classList.add('text-[#172B5C]');
+        links.forEach(link => {
+          link.classList.remove('text-white');
+          link.classList.add('text-[#172033]');
+        });
+      } else {
+        navbar.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-md', 'py-3');
+        navbar.classList.add('py-5');
+        schoolName.classList.add('text-white');
+        schoolName.classList.remove('text-[#172B5C]');
+        links.forEach(link => {
+          link.classList.add('text-white');
+          link.classList.remove('text-[#172033]');
+        });
+      }
+    });
+
+    updateUserInterface();
+    refreshIcons();
+  </script>
+</body>
+</html>
